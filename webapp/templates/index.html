@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object Detection Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; }
+    h1, h2, h3, .hero-title { font-family: 'Montserrat', Arial, sans-serif; }
+    .neon {
+      color: #00ffe7;
+      text-shadow: 0 0 8px #00ffe7, 0 0 16px #00ffe7;
+    }
+    .card-glow {
+      box-shadow: 0 4px 32px 0 rgba(0,255,231,0.08), 0 1.5px 0 0 #00ffe7;
+    }
+    .scrollbar::-webkit-scrollbar { width: 8px; background: #23272f; }
+    .scrollbar::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 8px; }
+  </style>
+</head>
+<body class="bg-[#181c23] min-h-screen text-gray-200">
+  <!-- Navigation Bar -->
+  <nav class="bg-[#1a1f29] shadow-md py-4 px-8 flex justify-between items-center rounded-b-2xl border-b border-[#23272f]">
+    <div class="flex items-center gap-3">
+      <img src="/static/img/cv.jpeg" alt="AI Computer Vision" class="w-10 h-10 rounded-full border-2 border-[#00ffe7] bg-[#23272f]">
+      <span class="text-2xl font-extrabold tracking-tight neon hero-title">Object Detection Suite</span>
+    </div>
+    <div class="flex items-center gap-4">
+      {% if session.username %}
+        <span class="text-gray-400 font-semibold">Welcome, <span class="text-[#00ffe7]">{{ session.username }}</span>!</span>
+        <a href="{{ url_for('signout') }}" class="bg-gradient-to-r from-[#00ffe7] to-[#007cf0] text-[#181c23] px-4 py-2 rounded font-bold shadow hover:from-[#00bfae] hover:to-[#005fa3] transition">Log Out</a>
+      {% else %}
+        <a href="{{ url_for('signin') }}" class="bg-gradient-to-r from-[#00ffe7] to-[#007cf0] text-[#181c23] px-4 py-2 rounded font-bold shadow hover:from-[#00bfae] hover:to-[#005fa3] transition">Sign In</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col md:flex-row items-center justify-between gap-8 mt-12 mb-14 px-2">
+    <div class="flex-1">
+      <h1 class="text-5xl md:text-6xl font-extrabold neon mb-4 hero-title leading-tight">Empowering Vision with <span class="text-[#007cf0]">AI</span></h1>
+      <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-xl">A professional suite of real-world object detection tools powered by state-of-the-art computer vision. Analyze, count, and recognize objects in videos and images with precision and style.</p>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <img src="/static/img/cv.jpeg" alt="AI Computer Vision" class="w-80 md:w-96 rounded-2xl shadow-xl border-4 border-[#00ffe7] bg-[#23272f]">
+    </div>
+  </section>
+
+  <!-- Project Modules -->
+  <div class="max-w-4xl mx-auto px-2 scrollbar overflow-y-auto" style="max-height: 70vh;">
+    <div class="flex flex-col gap-10">
+      <!-- Car Counter -->
+      <div class="flex flex-col md:flex-row bg-[#23272f] card-glow rounded-2xl p-6 items-center gap-8 border border-[#2d3748]">
+        <img src="/static/img/car.jpeg" alt="Car Counter" class="w-44 h-32 object-cover rounded-xl border-2 border-[#00ffe7] shadow-md mb-4 md:mb-0">
+        <div class="flex-1">
+          <h2 class="text-2xl font-extrabold mb-2 text-[#00ffe7]">Car Counter</h2>
+          <p class="text-gray-300 mb-3">Detect and count cars, trucks, buses, and motorbikes in uploaded videos. Useful for traffic analysis, parking management, and urban planning. Powered by advanced YOLO models for accurate vehicle detection and tracking.</p>
+          <a href="/car" class="inline-block bg-gradient-to-r from-[#00ffe7] to-[#007cf0] text-[#181c23] px-4 py-2 rounded font-bold shadow hover:from-[#00bfae] hover:to-[#005fa3] transition">Go to Car Counter</a>
+        </div>
+      </div>
+      <!-- People Counter -->
+      <div class="flex flex-col md:flex-row bg-[#23272f] card-glow rounded-2xl p-6 items-center gap-8 border border-[#2d3748]">
+        <img src="/static/img/people.jpeg" alt="People Counter" class="w-44 h-32 object-cover rounded-xl border-2 border-[#00ffe7] shadow-md mb-4 md:mb-0">
+        <div class="flex-1">
+          <h2 class="text-2xl font-extrabold mb-2 text-[#00ffe7]">People Counter</h2>
+          <p class="text-gray-300 mb-3">Automatically detect and count people in video streams. Ideal for crowd monitoring, event management, and public safety. The model can distinguish individuals and track their movement across frames.</p>
+          <a href="/people" class="inline-block bg-gradient-to-r from-[#00ffe7] to-[#007cf0] text-[#181c23] px-4 py-2 rounded font-bold shadow hover:from-[#00bfae] hover:to-[#005fa3] transition">Go to People Counter</a>
+        </div>
+      </div>
+      <!-- PPE Detection -->
+      <div class="flex flex-col md:flex-row bg-[#23272f] card-glow rounded-2xl p-6 items-center gap-8 border border-[#2d3748]">
+        <img src="/static/img/ppe.jpeg" alt="PPE Detection" class="w-44 h-32 object-cover rounded-xl border-2 border-[#00ffe7] shadow-md mb-4 md:mb-0">
+        <div class="flex-1">
+          <h2 class="text-2xl font-extrabold mb-2 text-[#00ffe7]">Construction PPE Detection</h2>
+          <p class="text-gray-300 mb-3">Detect personal protective equipment (PPE) such as hardhats, safety vests, and masks on construction sites. This project helps ensure safety compliance and can be used for automated site monitoring.</p>
+          <a href="/construction" class="inline-block bg-gradient-to-r from-[#00ffe7] to-[#007cf0] text-[#181c23] px-4 py-2 rounded font-bold shadow hover:from-[#00bfae] hover:to-[#005fa3] transition">Go to PPE Detection</a>
+        </div>
+      </div>
+      <!-- Poker Card Detector -->
+      <div class="flex flex-col md:flex-row bg-[#23272f] card-glow rounded-2xl p-6 items-center gap-8 border border-[#2d3748]">
+        <img src="/static/img/poker.jpg" alt="Poker Card Detector" class="w-44 h-32 object-cover rounded-xl border-2 border-[#00ffe7] shadow-md mb-4 md:mb-0">
+        <div class="flex-1">
+          <h2 class="text-2xl font-extrabold mb-2 text-[#00ffe7]">Poker Card Detector</h2>
+          <p class="text-gray-300 mb-3">Detect and recognize poker cards in real time using your webcam or uploaded images. Great for gaming, card recognition, and building smart casino applications. The model identifies card values and suits with high accuracy.</p>
+          <a href="/poker" class="inline-block bg-gradient-to-r from-[#00ffe7] to-[#007cf0] text-[#181c23] px-4 py-2 rounded font-bold shadow hover:from-[#00bfae] hover:to-[#005fa3] transition">Go to Poker Detector</a>
+        </div>
+      </div>
+    </div>
+    <footer class="mt-12 text-center text-gray-500 text-xs">
+      &copy; 2025 Unified Object Detection Suite &mdash; Built with Flask & Tailwind CSS
+    </footer>
+  </div>
+</body>
+</html>
